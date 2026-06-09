@@ -2,7 +2,6 @@ import React from 'react';
 
 export default function Footer({ setActivePage }) {
   const handleQuickLink = (pageId) => {
-    console.log("Navigating via quick link to:", pageId);
     if (typeof setActivePage === 'function') {
       setActivePage(pageId);
     }

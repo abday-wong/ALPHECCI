@@ -423,14 +423,6 @@ export default function Home({ setActivePage }) {
           border-radius: var(--border-radius-full);
           position: relative;
           cursor: pointer;
-        }
-
-        .toggle-switch {
-          width: 38px;
-          height: 20px;
-          border-radius: var(--border-radius-full);
-          position: relative;
-          cursor: pointer;
           background: var(--bg-main);
           border: 1px solid rgba(0, 0, 0, 0.15);
         }

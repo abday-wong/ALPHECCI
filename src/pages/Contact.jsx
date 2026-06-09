@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
+
+// EmailJS configuration — set your credentials in the .env file
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 export default function Contact({ preFillData, setPreFillData }) {
   const [formData, setFormData] = useState({
@@ -11,6 +17,7 @@ export default function Contact({ preFillData, setPreFillData }) {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [sendError, setSendError] = useState(null);
 
   // Load pre-fill data if available
   useEffect(() => {
@@ -28,25 +35,50 @@ export default function Contact({ preFillData, setPreFillData }) {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    setSendError(null); // clear any prior error on user input
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSendError(null);
+
     if (!formData.name || !formData.email || !formData.message) {
-      alert('Please fill out all required fields.');
+      setSendError('Please fill out all required fields (Name, Email, and Message).');
       return;
     }
-    
+
+    // Map budget value to a human-readable label for the email
+    const budgetLabels = {
+      '5000': 'Under $10,000',
+      '10000': '$10,000 – $25,000',
+      '25000': '$25,000 – $50,000',
+      '50000': '$50,000 – $100,000',
+      '100000': 'Over $100,000'
+    };
+
+    const templateParams = {
+      from_name:    formData.name,
+      from_email:   formData.email,
+      subject:      formData.subject || '(No Subject)',
+      budget_range: budgetLabels[formData.budget] || formData.budget,
+      message:      formData.message,
+      to_email:     'abday.hafidz23@gmail.com'
+    };
+
     setLoading(true);
-    // Simulate API request
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
       setIsSubmitted(true);
-      // Reset form
+      // Reset form on success
       setFormData({
         name: '',
         email: '',
@@ -54,7 +86,12 @@ export default function Contact({ preFillData, setPreFillData }) {
         budget: '10000',
         message: ''
       });
-    }, 1500);
+    } catch (error) {
+      console.error('EmailJS send error:', error);
+      setSendError('Message failed to transmit. Please try again or email us directly at abday.hafidz23@gmail.com.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -195,6 +232,14 @@ export default function Contact({ preFillData, setPreFillData }) {
                   required
                 ></textarea>
               </div>
+
+              {/* Error Banner */}
+              {sendError && (
+                <div className="send-error-banner">
+                  <i className="fas fa-exclamation-triangle"></i>
+                  <span>{sendError}</span>
+                </div>
+              )}
 
               <button
                 type="submit"
@@ -407,6 +452,26 @@ export default function Contact({ preFillData, setPreFillData }) {
         .close-success-btn {
           width: 100%;
           margin-top: 8px;
+        }
+
+        /* Error Banner */
+        .send-error-banner {
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          padding: 14px 18px;
+          border-radius: var(--border-radius-md);
+          background: rgba(184, 58, 56, 0.05);
+          border: 1px solid rgba(184, 58, 56, 0.2);
+          color: #b83a38;
+          font-size: 0.9rem;
+          line-height: 1.5;
+          margin-bottom: 8px;
+        }
+
+        .send-error-banner i {
+          margin-top: 2px;
+          flex-shrink: 0;
         }
 
         /* Responsive styling */

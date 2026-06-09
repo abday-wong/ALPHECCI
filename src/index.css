@@ -315,11 +315,20 @@ a {
   transform: translateY(0);
 }
 
-.delay-100 { transition-delay: 100ms; }
-.delay-200 { transition-delay: 200ms; }
-.delay-300 { transition-delay: 300ms; }
-.delay-400 { transition-delay: 400ms; }
-.delay-500 { transition-delay: 500ms; }
+.reveal.active.delay-100 { transition-delay: 100ms; }
+.reveal.active.delay-200 { transition-delay: 200ms; }
+.reveal.active.delay-300 { transition-delay: 300ms; }
+.reveal.active.delay-400 { transition-delay: 400ms; }
+.reveal.active.delay-500 { transition-delay: 500ms; }
+
+/* Reset delay to 0 when fading out (scrolled out of view) */
+.reveal.delay-100,
+.reveal.delay-200,
+.reveal.delay-300,
+.reveal.delay-400,
+.reveal.delay-500 {
+  transition-delay: 0ms;
+}
 
 /* Responsive Overrides */
 @media (max-width: 768px) {
