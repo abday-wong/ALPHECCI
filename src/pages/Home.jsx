@@ -39,15 +39,26 @@ export default function Home({ setActivePage }) {
     
     // Capacity input contributes up to 30%. Optimum is 80-90%.
     // If it reaches 100%, it overheats and reduces efficiency slightly.
-    let capacityScore = (capacity / 100) * 30;
-    if (capacity > 90) {
-      capacityScore -= (capacity - 90) * 0.6; // penalty for overhead overload
+    let capacityScore = 0;
+    if (capacity <= 90) {
+      capacityScore = (capacity / 90) * 30;
+    } else {
+      capacityScore = 30 - (capacity - 90) * 0.6; // penalty for overhead overload
     }
     score += Math.max(0, Math.round(capacityScore));
     return Math.min(100, score);
   };
 
   const performanceScore = calculatePerformance();
+
+  const getSystemStatus = () => {
+    if (!secureNode && !cloudSync) return 'DEGRADED';
+    if (!secureNode) return 'INSECURE';
+    if (!cloudSync) return 'UNSYNCED';
+    if (capacity > 90) return 'OVERLOAD';
+    if (capacity >= 80) return 'OPTIMAL';
+    return 'ONLINE';
+  };
 
   return (
     <div className="home-page animate-fade-in">
@@ -87,7 +98,9 @@ export default function Home({ setActivePage }) {
                   <span className="dot dot-y"></span>
                   <span className="dot dot-g"></span>
                 </div>
-                <div className="visual-tab neo-sunken">system_status: online</div>
+                <div className={`visual-tab neo-sunken status-${getSystemStatus().toLowerCase()}`}>
+                  system_status: {getSystemStatus().toLowerCase()}
+                </div>
               </div>
               <div className="visual-body">
                 {/* Neomorphic Metric Circle */}
@@ -584,6 +597,97 @@ export default function Home({ setActivePage }) {
           .cta-box {
             padding: 50px 20px;
           }
+        }
+
+        /* Custom Neomorphic Range Slider */
+        .neo-range-slider {
+          -webkit-appearance: none;
+          width: 100%;
+          background: var(--bg-main);
+          border-radius: var(--border-radius-full);
+          box-shadow: var(--shadow-inset-dark), var(--shadow-inset-light);
+          border: 1px solid rgba(0, 0, 0, 0.15);
+          outline: none;
+          margin: 10px 0;
+          transition: var(--transition-smooth);
+        }
+
+        .neo-range-slider::-webkit-slider-runnable-track {
+          width: 100%;
+          height: 8px;
+          cursor: pointer;
+          background: transparent;
+          border-radius: var(--border-radius-full);
+        }
+
+        .neo-range-slider::-webkit-slider-thumb {
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          background: var(--bg-card);
+          cursor: pointer;
+          -webkit-appearance: none;
+          margin-top: -6px;
+          box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+          border: 1px solid rgba(255, 204, 51, 0.2);
+          transition: var(--transition-bounce);
+        }
+
+        .neo-range-slider::-webkit-slider-thumb:hover {
+          background: var(--gold-primary);
+          box-shadow: 0 0 10px var(--gold-glow-strong), 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+          transform: scale(1.15);
+        }
+
+        .neo-range-slider::-webkit-slider-thumb:active {
+          box-shadow: var(--shadow-inset-dark), var(--shadow-inset-light);
+        }
+
+        .neo-range-slider::-moz-range-track {
+          width: 100%;
+          height: 8px;
+          cursor: pointer;
+          background: transparent;
+          border-radius: var(--border-radius-full);
+        }
+
+        .neo-range-slider::-moz-range-thumb {
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          background: var(--bg-card);
+          cursor: pointer;
+          border: 1px solid rgba(255, 204, 51, 0.2);
+          box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+          transition: var(--transition-bounce);
+        }
+
+        .neo-range-slider::-moz-range-thumb:hover {
+          background: var(--gold-primary);
+          box-shadow: 0 0 10px var(--gold-glow-strong), 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+          transform: scale(1.15);
+        }
+
+        /* Dynamic Status Text Glows */
+        .status-optimal {
+          color: #2d7a43 !important;
+          border-color: rgba(45, 122, 67, 0.2) !important;
+          background: rgba(45, 122, 67, 0.05) !important;
+          text-shadow: 0 0 4px rgba(45, 122, 67, 0.1);
+        }
+
+        .status-overload {
+          color: #b83a38 !important;
+          border-color: rgba(184, 58, 56, 0.2) !important;
+          background: rgba(184, 58, 56, 0.05) !important;
+          text-shadow: 0 0 4px rgba(184, 58, 56, 0.1);
+        }
+
+        .status-degraded, .status-insecure, .status-unsynced {
+          color: #c47d00 !important;
+          border-color: rgba(196, 125, 0, 0.2) !important;
+          background: rgba(196, 125, 0, 0.05) !important;
+          text-shadow: 0 0 4px rgba(196, 125, 0, 0.1);
         }
       `}</style>
     </div>
