@@ -23,16 +23,21 @@ export default function Footer({ setActivePage }) {
             Designing and engineering next-generation digital products. Empowering forward-thinking enterprises with cutting-edge tech.
           </p>
           <div className="social-links-row">
-            {['twitter', 'github', 'linkedin', 'instagram'].map((platform) => (
+            {[
+              { id: 'twitter', url: 'https://twitter.com' },
+              { id: 'github', url: 'https://github.com/abday-wong' },
+              { id: 'linkedin', url: 'https://linkedin.com/in/abday-wong' },
+              { id: 'instagram', url: 'https://instagram.com' }
+            ].map((platform) => (
               <a
-                key={platform}
-                href={`https://${platform}.com`}
+                key={platform.id}
+                href={platform.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-btn neo-raised"
-                aria-label={`Visit our ${platform} page`}
+                aria-label={`Visit our ${platform.id} page`}
               >
-                <i className={`fab fa-${platform}`}></i>
+                <i className={`fab fa-${platform.id}`}></i>
               </a>
             ))}
           </div>

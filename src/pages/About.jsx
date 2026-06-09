@@ -24,19 +24,25 @@ export default function About() {
       name: 'Abday Hafidz',
       role: 'Founder & Principal Architect',
       bio: 'Full-stack software architect specializing in interactive systems, cloud engineering, and high-performance digital product layouts.',
-      avatarIcon: 'fa-user-astronaut'
+      avatarIcon: 'fa-user-astronaut',
+      linkedin: 'https://linkedin.com/in/abday-wong',
+      github: 'https://github.com/abday-wong'
     },
     {
       name: 'Marcus Chen',
       role: 'Director of Engineering',
       bio: 'Full-stack systems architect. Expert in highly concurrent web platforms and distributed cloud systems.',
-      avatarIcon: 'fa-laptop-code'
+      avatarIcon: 'fa-laptop-code',
+      linkedin: 'https://linkedin.com',
+      github: 'https://github.com'
     },
     {
       name: 'Dr. Sean Miller',
       role: 'Principal AI Engineer',
       bio: 'Researcher in NLP and semantic parsing. Designing bespoke LLM orchestrations and vector search models.',
-      avatarIcon: 'fa-brain'
+      avatarIcon: 'fa-brain',
+      linkedin: 'https://linkedin.com',
+      github: 'https://github.com'
     }
   ];
 
@@ -122,9 +128,9 @@ export default function About() {
                 </div>
 
                 <div className="team-social-bar neo-sunken">
-                  <a href="#linkedin" className="team-social-link" aria-label="LinkedIn Profile"><i className="fab fa-linkedin-in"></i></a>
-                  <a href="#twitter" className="team-social-link" aria-label="Twitter Profile"><i className="fab fa-twitter"></i></a>
-                  <a href="#github" className="team-social-link" aria-label="GitHub Profile"><i className="fab fa-github"></i></a>
+                  <a href={member.linkedin} className="team-social-link" aria-label="LinkedIn Profile" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin-in"></i></a>
+                  {member.twitter && <a href={member.twitter} className="team-social-link" aria-label="Twitter Profile" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i></a>}
+                  <a href={member.github} className="team-social-link" aria-label="GitHub Profile" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a>
                 </div>
               </div>
             ))}
