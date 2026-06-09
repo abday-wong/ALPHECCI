@@ -26,7 +26,7 @@ export default function Services({ setActivePage, setPreFillData }) {
     },
     {
       id: 'consult',
-      icon: 'fa-chart-network',
+      icon: 'fa-network-wired',
       title: 'Digital Transformation',
       description: 'Assisting companies in auditing legacy systems and introducing modern developer tooling, automated CI/CD pipelines, and high-performance databases.',
       details: ['Legacy Code Audits', 'CI/CD & DevOps Automation', 'Database Optimization', 'Tech Stack Advising']
