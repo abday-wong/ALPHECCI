@@ -88,6 +88,8 @@ export default function Portfolio() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
+        } else {
+          entry.target.classList.remove('active');
         }
       });
     }, observerOptions);
@@ -103,10 +105,9 @@ export default function Portfolio() {
         if (card.classList.contains('active') || isInViewport) {
           // Keep it visible immediately if it is already active or in the viewport
           card.classList.add('active');
-        } else {
-          // Otherwise, observe it so it reveals on scroll
-          observer.observe(card);
         }
+        // Always observe the card so we can handle scrolling out of it!
+        observer.observe(card);
       });
     }, 100);
 
