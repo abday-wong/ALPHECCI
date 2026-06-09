@@ -82,13 +82,13 @@ export default function Contact({ preFillData, setPreFillData }) {
               </p>
               
               <ul className="info-list">
-                <li className="info-list-item">
+                 <li className="info-list-item">
                   <div className="info-icon-box neo-sunken">
                     <i className="fas fa-envelope text-gold"></i>
                   </div>
                   <div className="info-text-box">
                     <span className="info-label text-muted">Client Inquiries</span>
-                    <span className="info-value">hello@aethera.studio</span>
+                    <span className="info-value">abday.hafidz23@gmail.com</span>
                   </div>
                 </li>
                 
@@ -98,7 +98,7 @@ export default function Contact({ preFillData, setPreFillData }) {
                   </div>
                   <div className="info-text-box">
                     <span className="info-label text-muted">Phone Hotline</span>
-                    <span className="info-value">+1 (555) 234-5678</span>
+                    <span className="info-value">+62 85891674061</span>
                   </div>
                 </li>
 
@@ -108,7 +108,7 @@ export default function Contact({ preFillData, setPreFillData }) {
                   </div>
                   <div className="info-text-box">
                     <span className="info-label text-muted">Global Headquarters</span>
-                    <span className="info-value">100 Innovation Way, Suite 400<br />Silicon Valley, CA 94025</span>
+                    <span className="info-value">Perum Puri Rajeg, Satria 7th Street No. 10<br />LembangSari, Tangerang, Banten, Indonesia</span>
                   </div>
                 </li>
               </ul>

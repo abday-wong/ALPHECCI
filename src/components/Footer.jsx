@@ -74,19 +74,19 @@ export default function Footer({ setActivePage }) {
               <div className="contact-icon-box neo-sunken">
                 <i className="fas fa-envelope text-gold"></i>
               </div>
-              <span>hello@aethera.studio</span>
+              <span>abday.hafidz23@gmail.com</span>
             </li>
             <li>
               <div className="contact-icon-box neo-sunken">
                 <i className="fas fa-phone-alt text-gold"></i>
               </div>
-              <span>+1 (555) 234-5678</span>
+              <span>+62 85891674061</span>
             </li>
             <li>
               <div className="contact-icon-box neo-sunken">
                 <i className="fas fa-map-marker-alt text-gold"></i>
               </div>
-              <span>100 Innovation Way, Suite 400<br />Silicon Valley, CA 94025</span>
+              <span>Perum Puri Rajeg, Satria 7th Street No. 10<br />LembangSari, Tangerang, Banten, Indonesia</span>
             </li>
           </ul>
         </div>
