@@ -261,20 +261,32 @@ export default function Contact({ preFillData, setPreFillData }) {
       {isSubmitted && (
         <div className="modal-overlay animate-fade-in" onClick={() => setIsSubmitted(false)}>
           <div className="modal-success-card neo-raised" onClick={(e) => e.stopPropagation()}>
-            <div className="success-icon-container neo-sunken">
-              <i className="fas fa-check success-check-icon text-gold"></i>
+
+            {/* Close X button */}
+            <button className="modal-close-x" onClick={() => setIsSubmitted(false)} aria-label="Close">
+              <i className="fas fa-times"></i>
+            </button>
+
+            {/* Animated check icon */}
+            <div className="success-ring-outer">
+              <div className="success-ring-inner neo-sunken">
+                <i className="fas fa-check success-check-icon"></i>
+              </div>
             </div>
-            
-            <h2 className="success-title">MESSAGE TRANSMITTED</h2>
-            <p className="success-desc">
-              Your details have successfully cleared gateway validation. Our systems architect has queued your request and will initiate contact within 12 business hours.
-            </p>
-            
+
+            <div className="success-text-group">
+              <span className="success-badge">Transmission Confirmed</span>
+              <h2 className="success-title">Message Sent!</h2>
+              <p className="success-desc">
+                Your project brief has been received. Our team will review and initiate contact within <strong>12 business hours</strong>.
+              </p>
+            </div>
+
             <button
               onClick={() => setIsSubmitted(false)}
-              className="neo-btn neo-btn-secondary close-success-btn"
+              className="neo-btn neo-btn-primary close-success-btn"
             >
-              Acknowledge & Close
+              <i className="fas fa-check-circle"></i> Got it!
             </button>
           </div>
         </div>
@@ -408,50 +420,146 @@ export default function Contact({ preFillData, setPreFillData }) {
           font-size: 1.05rem;
         }
 
-        /* Success Card Styling */
+        /* ── Modal Overlay ── */
+        .modal-overlay {
+          position: fixed;
+          inset: 0;
+          z-index: 2000;
+          background: rgba(33, 31, 24, 0.45);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 24px;
+        }
+
+        /* ── Success Card ── */
         .modal-success-card {
+          position: relative;
           width: 100%;
-          max-width: 480px;
-          padding: 40px;
+          max-width: 420px;
+          padding: 48px 40px 40px;
           border-radius: var(--border-radius-lg);
-          border: 1px solid rgba(255, 204, 51, 0.08);
+          border: 1px solid rgba(209, 146, 0, 0.12);
           text-align: center;
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 24px;
+          gap: 20px;
+          background: var(--bg-card);
         }
 
-        .success-icon-container {
-          width: 72px;
-          height: 72px;
+        /* Close X */
+        .modal-close-x {
+          position: absolute;
+          top: 16px;
+          right: 16px;
+          width: 32px;
+          height: 32px;
           border-radius: 50%;
+          border: none;
+          background: var(--bg-main);
+          box-shadow: 2px 2px 6px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
+          color: var(--text-muted);
+          font-size: 0.8rem;
+          cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 1px solid rgba(0, 0, 0, 0.2);
+          transition: var(--transition-smooth);
+        }
+
+        .modal-close-x:hover {
+          color: var(--gold-primary);
+          box-shadow: 2px 2px 8px var(--shadow-dark), -2px -2px 8px var(--shadow-light), 0 0 8px var(--gold-glow);
+        }
+
+        /* Animated ring */
+        .success-ring-outer {
+          width: 96px;
+          height: 96px;
+          border-radius: 50%;
+          background: var(--bg-card);
+          box-shadow: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          animation: successPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .success-ring-inner {
+          width: 72px;
+          height: 72px;
+          border-radius: 50%;
+          border: 1px solid rgba(209, 146, 0, 0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .success-check-icon {
-          font-size: 2rem;
-          text-shadow: 0 0 10px var(--gold-glow);
+          font-size: 1.8rem;
+          color: var(--gold-primary);
+          text-shadow: 0 0 16px var(--gold-glow-strong);
+        }
+
+        @keyframes successPop {
+          0%   { transform: scale(0.5); opacity: 0; }
+          70%  { transform: scale(1.08); }
+          100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Text group */
+        .success-text-group {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .success-badge {
+          display: inline-flex;
+          padding: 4px 14px;
+          border-radius: var(--border-radius-full);
+          font-family: var(--font-heading);
+          font-size: 0.7rem;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: var(--gold-primary);
+          background: var(--bg-main);
+          box-shadow: var(--shadow-inset-dark), var(--shadow-inset-light);
+          border: 1px solid rgba(209, 146, 0, 0.15);
         }
 
         .success-title {
-          font-size: 1.5rem;
-          font-weight: 800;
-          letter-spacing: 0.05em;
+          font-size: 1.75rem;
+          font-weight: 900;
+          color: var(--text-primary);
+          letter-spacing: -0.02em;
+          margin: 0;
         }
 
         .success-desc {
           color: var(--text-secondary);
-          font-size: 0.95rem;
-          line-height: 1.6;
+          font-size: 0.9rem;
+          line-height: 1.65;
+          max-width: 320px;
+          margin: 0;
+        }
+
+        .success-desc strong {
+          color: var(--text-primary);
+          font-weight: 600;
         }
 
         .close-success-btn {
           width: 100%;
-          margin-top: 8px;
+          padding: 14px 0;
+          margin-top: 4px;
+          font-size: 1rem;
+          gap: 8px;
         }
 
         /* Error Banner */
