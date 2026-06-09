@@ -89,7 +89,7 @@ export default function About() {
 
           <div className="values-grid">
             {values.map((val, idx) => (
-              <div key={idx} className="value-card neo-raised">
+              <div key={idx} className={`value-card neo-raised reveal delay-${(idx + 1) * 100}`}>
                 <div className="value-header">
                   <span className="value-number text-gold neo-sunken">{val.number}</span>
                   <h3>{val.title}</h3>
@@ -114,7 +114,7 @@ export default function About() {
 
           <div className="team-grid">
             {teamMembers.map((member, idx) => (
-              <div key={idx} className="team-card neo-raised-interactive">
+              <div key={idx} className={`team-card neo-raised-interactive reveal delay-${(idx + 1) * 100}`}>
                 <div className="team-avatar-container neo-sunken">
                   <div className="team-avatar-fallback">
                     <i className={`fas ${member.avatarIcon} avatar-icon text-gold`}></i>

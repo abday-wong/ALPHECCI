@@ -117,7 +117,7 @@ export default function Services({ setActivePage, setPreFillData }) {
       <section className="section services-grid-section">
         <div className="container services-grid">
           {servicesList.map((service) => (
-            <div key={service.id} className="service-card neo-raised">
+            <div key={service.id} className="service-card neo-raised reveal">
               <div className="service-icon-box neo-sunken">
                 <i className={`fas ${service.icon} text-gold`}></i>
               </div>
@@ -147,7 +147,7 @@ export default function Services({ setActivePage, setPreFillData }) {
             </p>
           </div>
 
-          <div className="estimator-box neo-raised">
+          <div className="estimator-box neo-raised reveal">
             <div className="estimator-inputs">
               {/* Slider Input */}
               <div className="input-group-spacing">

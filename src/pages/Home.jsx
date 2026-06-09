@@ -157,7 +157,7 @@ export default function Home({ setActivePage }) {
         <div className="container">
           <div className="stats-grid">
             {stats.map((stat, i) => (
-              <div key={i} className="stat-card neo-raised">
+              <div key={i} className={`stat-card neo-raised reveal delay-${(i + 1) * 100}`}>
                 <h3 className="stat-number text-gold">{stat.number}</h3>
                 <p className="stat-label">{stat.label}</p>
               </div>
@@ -179,7 +179,7 @@ export default function Home({ setActivePage }) {
 
           <div className="principles-grid">
             {features.map((feat, i) => (
-              <div key={i} className="principle-card neo-raised-interactive">
+              <div key={i} className={`principle-card neo-raised-interactive reveal delay-${(i + 1) * 100}`}>
                 <div className="icon-wrapper neo-sunken">
                   <i className={`fas ${feat.icon} text-gold`}></i>
                 </div>
@@ -194,7 +194,7 @@ export default function Home({ setActivePage }) {
       {/* Call to Action Section */}
       <section className="section cta-section">
         <div className="container">
-          <div className="cta-box neo-raised">
+          <div className="cta-box neo-raised reveal">
             <div className="cta-content">
               <h2>READY TO MATERIALIZE YOUR DIGITAL VISION?</h2>
               <p>

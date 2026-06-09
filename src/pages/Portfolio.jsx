@@ -109,7 +109,7 @@ export default function Portfolio() {
             <div
               key={project.id}
               onClick={() => setSelectedProject(project)}
-              className="project-card neo-raised-interactive"
+              className="project-card neo-raised-interactive reveal"
             >
               <div className="project-category-badge neo-sunken">
                 {project.category === 'uiux' ? 'UI/UX' : project.category === 'webapp' ? 'Web App' : 'Custom'}

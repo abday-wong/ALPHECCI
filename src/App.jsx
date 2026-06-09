@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -13,6 +13,33 @@ function App() {
   const [preFillData, setPreFillData] = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [loaderMessage, setLoaderMessage] = useState('Initializing Page Module...');
+
+  // Set up Scroll Reveal Intersection Observer whenever page changes
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px' // reveal slightly before it comes fully into view
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    // Tiny timeout to let React paint the DOM first
+    const timer = setTimeout(() => {
+      const revealElements = document.querySelectorAll('.reveal');
+      revealElements.forEach((el) => observer.observe(el));
+    }, 120);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, [displayPage]);
 
   // custom page change with simulated delay (slow render)
   const handlePageChange = (newPageId) => {
