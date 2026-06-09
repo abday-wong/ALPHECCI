@@ -1,4 +1,4 @@
-# Aethera Tech Studio — robots.txt
+# Alphecci — robots.txt
 # Instructs search engine crawlers how to index this site
 
 User-agent: *
