@@ -2,8 +2,15 @@ import React from 'react';
 
 export default function Footer({ setActivePage }) {
   const handleQuickLink = (pageId) => {
-    setActivePage(pageId);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    console.log("Navigating via quick link to:", pageId);
+    if (typeof setActivePage === 'function') {
+      setActivePage(pageId);
+    }
+    try {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (e) {
+      window.scrollTo(0, 0);
+    }
   };
 
   const currentYear = new Date().getFullYear();
@@ -244,6 +251,7 @@ export default function Footer({ setActivePage }) {
         .footer-bottom {
           display: flex;
           flex-direction: column;
+          padding-bottom: 70px; /* Push legal links above the floating bottom navbar */
         }
 
         .footer-bottom-flex {
