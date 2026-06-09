@@ -21,7 +21,12 @@ export default function Footer({ setActivePage }) {
         <div className="footer-col brand-col animate-fade-in">
           <div className="logo-container" onClick={() => handleQuickLink('home')} style={{ cursor: 'pointer' }}>
             <div className="logo-icon neo-raised">
-              <span className="logo-dot"></span>
+              <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Alphecci AP monogram">
+                <line x1="13" y1="87" x2="54" y2="13" stroke="#d19200" strokeWidth="9.5" strokeLinecap="round"/>
+                <line x1="54" y1="13" x2="54" y2="87" stroke="#d19200" strokeWidth="9.5" strokeLinecap="round"/>
+                <path d="M54,13 Q88,13 88,40 Q88,63 54,63" stroke="#d19200" strokeWidth="9.5" strokeLinecap="round" fill="none"/>
+                <line x1="34" y1="47" x2="54" y2="47" stroke="#d19200" strokeWidth="9.5" strokeLinecap="round"/>
+              </svg>
             </div>
             <span className="logo-text">ALPHECCI<span className="text-gold">.</span></span>
           </div>

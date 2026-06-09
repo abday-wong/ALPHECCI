@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!--
+    AP Ligature Design:
+    - A's left diagonal leg: bottom-left → apex
+    - Shared vertical stem: apex → bottom  (A's right leg + P's vertical stroke)
+    - P's bowl: D-curve from apex outward, returning to mid-stem
+    - A's crossbar: horizontal bar cutting through the A triangle
+  -->
+
+  <!-- A — left diagonal leg -->
+  <line x1="13" y1="87" x2="54" y2="13" stroke="#d19200" stroke-width="9.5" stroke-linecap="round"/>
+
+  <!-- Shared vertical stem (A right leg + P stem) -->
+  <line x1="54" y1="13" x2="54" y2="87" stroke="#d19200" stroke-width="9.5" stroke-linecap="round"/>
+
+  <!-- P — bowl (quadratic bezier curves forming a D shape) -->
+  <path d="M54,13 Q88,13 88,40 Q88,63 54,63" stroke="#d19200" stroke-width="9.5" stroke-linecap="round" fill="none"/>
+
+  <!-- A — crossbar (positioned at ~45% height of the A shape) -->
+  <line x1="34" y1="47" x2="54" y2="47" stroke="#d19200" stroke-width="9.5" stroke-linecap="round"/>
+</svg>
