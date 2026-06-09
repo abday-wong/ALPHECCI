@@ -116,7 +116,7 @@ function App() {
                 </div>
               </div>
               <div className="loader-text-group">
-                <span className="loader-title text-gold">ÆTHERA CORE SECURE LINK</span>
+                <span className="loader-title text-gold">ALPHECCI CORE SECURE LINK</span>
                 <span className="loader-status">{loaderMessage}</span>
               </div>
               <div className="loader-progress neo-sunken">

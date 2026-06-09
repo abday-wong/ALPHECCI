@@ -26,7 +26,7 @@ export default function Header({ activePage, setActivePage }) {
             <span className="logo-dot"></span>
           </div>
           <span className="logo-text">
-            ÆTHERA<span className="text-gold">.</span>
+            ALPHECCI<span className="text-gold">.</span>
           </span>
         </div>
 

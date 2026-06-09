@@ -71,7 +71,7 @@ export default function Home({ setActivePage }) {
               DECODING THE <span className="text-gradient">FUTURE</span> OF TECHNOLOGY
             </h1>
             <p className="hero-desc">
-              Aethera Tech Studio designs and engineers premium digital products. We synthesize high-fidelity UI/UX design with robust custom software architectures.
+              Alphecci designs and engineers premium digital products. We synthesize high-fidelity UI/UX design with robust custom software architectures.
             </p>
             <div className="hero-cta-group">
               <button 

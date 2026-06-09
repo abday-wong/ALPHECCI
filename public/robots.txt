@@ -1,0 +1,13 @@
+# Aethera Tech Studio — robots.txt
+# Instructs search engine crawlers how to index this site
+
+User-agent: *
+Allow: /
+
+# Point crawlers to the sitemap
+Sitemap: https://aethera-tech-studio.vercel.app/sitemap.xml
+
+# Block crawling of build artifacts and internal paths
+Disallow: /dist/
+Disallow: /.vercel/
+Disallow: /node_modules/

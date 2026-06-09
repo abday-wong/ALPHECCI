@@ -23,7 +23,7 @@ export default function Footer({ setActivePage }) {
             <div className="logo-icon neo-raised">
               <span className="logo-dot"></span>
             </div>
-            <span className="logo-text">ÆTHERA<span className="text-gold">.</span></span>
+            <span className="logo-text">ALPHECCI<span className="text-gold">.</span></span>
           </div>
           <p className="brand-tagline">
             Designing and engineering next-generation digital products. Empowering forward-thinking enterprises with cutting-edge tech.
@@ -102,7 +102,7 @@ export default function Footer({ setActivePage }) {
       <div className="container footer-bottom">
         <div className="divider neo-sunken"></div>
         <div className="footer-bottom-flex">
-          <p>© {currentYear} Aethera Tech Studio. All rights reserved.</p>
+          <p>© {currentYear} Alphecci. All rights reserved.</p>
           <div className="footer-legal-links">
             <button onClick={() => handleQuickLink('privacy')} className="legal-link-btn">Privacy Policy</button>
             <span className="dot-separator">•</span>

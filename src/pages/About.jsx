@@ -55,7 +55,7 @@ export default function About() {
             <span className="accent-badge">Who We Are</span>
             <h2>SYNTHESIZING DESIGN & ENGINEERING</h2>
             <p className="intro-paragraph">
-              Founded in Silicon Valley, Aethera Tech Studio emerged from a shared realization: the gap between pixel-perfect aesthetics and robust system engineering is too wide. We exist to close that gap.
+              Founded in Indonesia, Alphecci emerged from a shared realization: the gap between pixel-perfect aesthetics and robust system engineering is too wide. We exist to close that gap.
             </p>
             <p className="intro-paragraph-secondary text-muted">
               We operate as a boutique development partner, integrating directly with your product visionaries to deliver high-quality, secure, and intuitive web and mobile solutions.
@@ -65,7 +65,7 @@ export default function About() {
           <div className="intro-visual">
             <div className="story-card neo-raised">
               <div className="story-logo-container neo-sunken">
-                <span className="story-logo-inner">Æ</span>
+                <span className="story-logo-inner">AP</span>
               </div>
               <h3 className="story-title text-gold">OUR NARRATIVE</h3>
               <p className="story-text">

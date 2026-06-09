@@ -14,14 +14,14 @@ export default function Terms() {
           <section className="legal-section">
             <h3>1. Agreement to Terms</h3>
             <p>
-              By accessing the website of Aethera Tech Studio, you agree to be bound by these Terms of Service, all applicable laws and regulations, and agree that you are responsible for compliance with any local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site.
+              By accessing the website of Alphecci, you agree to be bound by these Terms of Service, all applicable laws and regulations, and agree that you are responsible for compliance with any local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site.
             </p>
           </section>
 
           <section className="legal-section">
             <h3>2. Intellectual Property Rights</h3>
             <p>
-              The intellectual property of the materials displayed on this site—including design assets, custom neomorphic CSS files, layouts, copy, and code—is owned by Aethera Tech Studio. You may view the public pages for informational purposes, but reproduction of these structural designs for commercial templates is prohibited without written consent from Abday Hafidz.
+              The intellectual property of the materials displayed on this site—including design assets, custom neomorphic CSS files, layouts, copy, and code—is owned by Alphecci. You may view the public pages for informational purposes, but reproduction of these structural designs for commercial templates is prohibited without written consent from Abday Hafidz.
             </p>
           </section>
 
@@ -46,14 +46,14 @@ export default function Terms() {
           <section className="legal-section">
             <h3>5. Limitation of Liability</h3>
             <p>
-              In no event shall Aethera Tech Studio or its founders be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on our site, even if we have been notified orally or in writing of the possibility of such damage.
+              In no event shall Alphecci or its founders be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on our site, even if we have been notified orally or in writing of the possibility of such damage.
             </p>
           </section>
 
           <section className="legal-section">
             <h3>6. Governing Law</h3>
             <p>
-              Any claim relating to Aethera Tech Studio's website or services shall be governed by the laws of Tangerang, Banten, Indonesia, without regard to its conflict of law provisions.
+              Any claim relating to Alphecci's website or services shall be governed by the laws of Tangerang, Banten, Indonesia, without regard to its conflict of law provisions.
             </p>
           </section>
 

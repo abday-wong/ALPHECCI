@@ -14,7 +14,7 @@ export default function Privacy() {
           <section className="legal-section">
             <h3>1. Introduction</h3>
             <p>
-              Aethera Tech Studio ("we," "our," or "us"), founded by Abday Hafidz in Tangerang, Banten, Indonesia, is committed to protecting the privacy of our clients and visitors. This Privacy Policy outlines how we collect, use, and protect your information when you interact with our company profile website and custom digital estimator tools.
+              Alphecci ("we," "our," or "us"), founded by Abday Hafidz in Tangerang, Banten, Indonesia, is committed to protecting the privacy of our clients and visitors. This Privacy Policy outlines how we collect, use, and protect your information when you interact with our company profile website and custom digital estimator tools.
             </p>
           </section>
 
