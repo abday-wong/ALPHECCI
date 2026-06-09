@@ -6,6 +6,8 @@ import Services from './pages/Services';
 import Portfolio from './pages/Portfolio';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
 
 function App() {
   const [activePage, setActivePage] = useState('home');
@@ -87,6 +89,10 @@ function App() {
             setPreFillData={setPreFillData}
           />
         );
+      case 'privacy':
+        return <Privacy />;
+      case 'terms':
+        return <Terms />;
       default:
         return <Home setActivePage={handlePageChange} />;
     }

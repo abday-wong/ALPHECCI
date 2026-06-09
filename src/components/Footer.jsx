@@ -98,9 +98,9 @@ export default function Footer({ setActivePage }) {
         <div className="footer-bottom-flex">
           <p>© {currentYear} Aethera Tech Studio. All rights reserved.</p>
           <div className="footer-legal-links">
-            <a href="#privacy" className="legal-link">Privacy Policy</a>
+            <button onClick={() => handleQuickLink('privacy')} className="legal-link-btn">Privacy Policy</button>
             <span className="dot-separator">•</span>
-            <a href="#terms" className="legal-link">Terms of Service</a>
+            <button onClick={() => handleQuickLink('terms')} className="legal-link-btn">Terms of Service</button>
           </div>
         </div>
       </div>
@@ -260,7 +260,16 @@ export default function Footer({ setActivePage }) {
           gap: 10px;
         }
 
-        .legal-link:hover {
+        .legal-link-btn {
+          background: none;
+          border: none;
+          color: inherit;
+          font: inherit;
+          cursor: pointer;
+          transition: var(--transition-smooth);
+        }
+
+        .legal-link-btn:hover {
           color: var(--gold-primary);
         }
 
