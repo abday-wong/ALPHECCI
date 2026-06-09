@@ -62,6 +62,15 @@ export default function Portfolio() {
       fullDesc: 'Lumina Energy requested a complete visual overhaul of their public-facing digital products. We ran user workshops and produced a unified branding system including custom iconography, layout grids, and interactive web elements. The final design positions them as a sleek, future-forward player in clean energy.',
       techStack: ['Brand Strategy', 'Figma', 'Interactive Mockups', 'Style Guidelines'],
       metric: '150% Increase in Web Engagement'
+    },
+    {
+      id: 7,
+      title: 'YokNabung Savings Tracker',
+      category: 'custom',
+      shortDesc: 'Premium Neo-Brutalist savings tracker and financial analytics application built on Flutter & Dart.',
+      fullDesc: 'YokNabung is a local-first savings tracker designed with a bold Neo-Brutalist interface. The application partitions long-term savings goals into progressive milestones, projects realistic completion dates using dynamic savings habits analytics, triggers local daily reminder notifications, and integrates background feedback dispatch via APIs. Custom tactile micro-animations simulate physical controls on user interactions.',
+      techStack: ['Flutter', 'Dart', 'Provider', 'Local DB', 'fl_chart', 'EmailJS API'],
+      metric: '4.9/5 Rating & 100% Data Privacy'
     }
   ];
 
