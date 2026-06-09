@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Portfolio() {
   const categories = [
@@ -76,6 +76,45 @@ export default function Portfolio() {
 
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
+
+  // Re-observe cards and reset transitions when category filter changes
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.05,
+      rootMargin: '0px 0px -20px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    // Give React time to reconcile filtered elements in DOM
+    const timer = setTimeout(() => {
+      const cards = document.querySelectorAll('.project-card.reveal');
+      cards.forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        // Check if the card is currently visible in the viewport
+        const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (card.classList.contains('active') || isInViewport) {
+          // Keep it visible immediately if it is already active or in the viewport
+          card.classList.add('active');
+        } else {
+          // Otherwise, observe it so it reveals on scroll
+          observer.observe(card);
+        }
+      });
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, [activeFilter]);
 
   const filteredProjects = activeFilter === 'all'
     ? projects
