@@ -21,10 +21,10 @@ export default function About() {
 
   const teamMembers = [
     {
-      name: 'Elena Vance',
-      role: 'Founder & Design Lead',
-      bio: 'Pioneering interactive systems for over a decade. Former senior UI strategist at major design agencies.',
-      avatarIcon: 'fa-user-ninja'
+      name: 'Abday Hafidz',
+      role: 'Founder & Principal Architect',
+      bio: 'Full-stack software architect specializing in interactive systems, cloud engineering, and high-performance digital product layouts.',
+      avatarIcon: 'fa-user-astronaut'
     },
     {
       name: 'Marcus Chen',
