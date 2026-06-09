@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Home({ setActivePage }) {
   const stats = [
@@ -25,6 +25,29 @@ export default function Home({ setActivePage }) {
       desc: 'Integrating cognitive features and data workflows using modern AI APIs and customized models.'
     }
   ];
+
+  // Interactive Dashboard States
+  const [capacity, setCapacity] = useState(85);
+  const [secureNode, setSecureNode] = useState(true);
+  const [cloudSync, setCloudSync] = useState(true);
+
+  // Dynamic Performance Score Calculation
+  const calculatePerformance = () => {
+    let score = 0;
+    if (secureNode) score += 45;
+    if (cloudSync) score += 25;
+    
+    // Capacity input contributes up to 30%. Optimum is 80-90%.
+    // If it reaches 100%, it overheats and reduces efficiency slightly.
+    let capacityScore = (capacity / 100) * 30;
+    if (capacity > 90) {
+      capacityScore -= (capacity - 90) * 0.6; // penalty for overhead overload
+    }
+    score += Math.max(0, Math.round(capacityScore));
+    return Math.min(100, score);
+  };
+
+  const performanceScore = calculatePerformance();
 
   return (
     <div className="home-page animate-fade-in">
@@ -72,7 +95,7 @@ export default function Home({ setActivePage }) {
                   <div className="outer-ring neo-raised">
                     <div className="inner-ring neo-sunken">
                       <div className="glowing-value">
-                        <span className="number">94</span>
+                        <span className="number">{performanceScore}</span>
                         <span className="percent">%</span>
                       </div>
                       <span className="label">PERFORMANCE</span>
@@ -85,23 +108,39 @@ export default function Home({ setActivePage }) {
                   <div className="slider-row">
                     <div className="slider-label">
                       <span>Neural Process Capacity</span>
-                      <span className="text-gold">85%</span>
+                      <span className="text-gold">{capacity}%</span>
                     </div>
-                    <div className="neo-sunken slider-track">
-                      <div className="slider-bar" style={{ width: '85%' }}></div>
+                    <div className="range-container" style={{ paddingTop: '0px' }}>
+                      <input
+                        type="range"
+                        min="10"
+                        max="100"
+                        value={capacity}
+                        onChange={(e) => setCapacity(Number(e.target.value))}
+                        className="neo-range-slider"
+                        style={{ height: '8px' }}
+                      />
                     </div>
                   </div>
 
                   <div className="toggle-row">
-                    <div className="toggle-item">
+                    <div 
+                      className="toggle-item" 
+                      onClick={() => setSecureNode(!secureNode)}
+                      style={{ cursor: 'pointer' }}
+                    >
                       <span className="toggle-label">Secure Node Link</span>
-                      <div className="toggle-switch active neo-sunken">
+                      <div className={`toggle-switch neo-sunken ${secureNode ? 'active' : ''}`}>
                         <span className="toggle-knob neo-raised"></span>
                       </div>
                     </div>
-                    <div className="toggle-item">
+                    <div 
+                      className="toggle-item" 
+                      onClick={() => setCloudSync(!cloudSync)}
+                      style={{ cursor: 'pointer' }}
+                    >
                       <span className="toggle-label">Cloud Syncing</span>
-                      <div className="toggle-switch active neo-sunken">
+                      <div className={`toggle-switch neo-sunken ${cloudSync ? 'active' : ''}`}>
                         <span className="toggle-knob neo-raised"></span>
                       </div>
                     </div>
@@ -373,19 +412,36 @@ export default function Home({ setActivePage }) {
           cursor: pointer;
         }
 
+        .toggle-switch {
+          width: 38px;
+          height: 20px;
+          border-radius: var(--border-radius-full);
+          position: relative;
+          cursor: pointer;
+          background: var(--bg-main);
+          border: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
         .toggle-switch.active {
-          background: rgba(255, 204, 51, 0.1);
+          background: rgba(209, 146, 0, 0.1);
+          border-color: rgba(209, 146, 0, 0.25);
         }
 
         .toggle-knob {
           width: 14px;
           height: 14px;
           border-radius: 50%;
-          background: var(--gold-primary);
-          box-shadow: 0 0 5px var(--gold-primary);
+          background: var(--text-muted);
           position: absolute;
-          top: 3px;
-          right: 3px;
+          top: 2px;
+          left: 2px;
+          transition: var(--transition-bounce);
+        }
+
+        .toggle-switch.active .toggle-knob {
+          left: 20px;
+          background: var(--gold-primary);
+          box-shadow: 0 0 8px var(--gold-primary);
         }
 
         /* Stats Grid */
