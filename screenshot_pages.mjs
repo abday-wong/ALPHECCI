@@ -45,14 +45,23 @@ async function captureScreenshots() {
 
   // Helper to wait for the page transition loader to disappear
   async function waitForPageLoad() {
-    // Wait for the loader overlay to disappear if visible, or just wait a safe duration
     await page.waitForTimeout(1500); 
-    // Wait for any network requests to settle
     try {
       await page.waitForLoadState('networkidle', { timeout: 3000 });
     } catch (e) {
       // ignore timeout
     }
+    
+    // Crucial: Adjust the fixed floating navigation bar to absolute positioning 
+    // so it doesn't get repeated or stuck in the middle of full-page screenshots.
+    await page.evaluate(() => {
+      const nav = document.querySelector('.header-nav');
+      if (nav) {
+        nav.style.position = 'absolute';
+        nav.style.bottom = 'auto';
+        nav.style.top = '24px';
+      }
+    });
   }
 
   // 1. Home
