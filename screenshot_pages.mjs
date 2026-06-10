@@ -52,15 +52,21 @@ async function captureScreenshots() {
       // ignore timeout
     }
     
-    // Crucial: Adjust the fixed floating navigation bar to absolute positioning 
-    // so it doesn't get repeated or stuck in the middle of full-page screenshots.
-    await page.evaluate(() => {
-      const nav = document.querySelector('.header-nav');
-      if (nav) {
-        nav.style.position = 'absolute';
-        nav.style.bottom = 'auto';
-        nav.style.top = '24px';
-      }
+    // Inject CSS rule to make navigation bar absolute at the bottom of the entire page
+    // This prevents repetition during fullPage scroll stitching and places it at the absolute bottom.
+    await page.addStyleTag({
+      content: `
+        .app-wrapper {
+          position: relative !important;
+        }
+        .header-nav {
+          position: absolute !important;
+          bottom: 24px !important;
+          top: auto !important;
+          left: 50% !important;
+          transform: translateX(-50%) !important;
+        }
+      `
     });
   }
 
